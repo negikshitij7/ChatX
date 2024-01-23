@@ -1,0 +1,53 @@
+<%- include('layouts/header.ejs') %>
+
+
+<div class="container">
+
+  <div>
+    <img src="/<%=group.image%>" alt="" height="200px" width="200px">
+    <p><b><%=group.name%></b></p>
+
+
+     <% 
+     if(available==0)
+     {
+        %>
+        <p style="color:red;"><b>The Group cannot accomodate any further members</b></p>
+        <%
+    }
+     else
+     {
+        %>
+        <p><b><%=available%></b> more people can join</p>
+        <% 
+    } 
+     
+     if(iscreator)
+      {
+       %>
+           <p>
+            <b>You are the <strong> Creator</strong> of this group</b>
+           </p>
+       <%
+
+      }
+      else if(isjoined>0)
+      {
+        %>
+        <p>
+            <b>You are already in this group</b>
+        </p>
+        <%
+    }
+      else if(available>0){
+         %>
+        <button class="btn btn-success joinGroup" data-id="<%=group._id%>">Join Group</button>
+        <%  
+    }   
+ 
+     %> 
+  </div>
+</div>
+
+
+<%- include('layouts/footer.ejs') %>
